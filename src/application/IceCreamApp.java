@@ -6,12 +6,12 @@ public class IceCreamApp {
 
     public static void main(String[] args) {
 
-        // Priclist instance
-        PriceList priceList1 = new PriceList(1.30,2.50,3.00);
+        // Pricelist instance
+        PriceList priceList = new PriceList(1.0,2.50,3.00);
 
         // Initializing Ice Salon
 
-        IceCreamSeller iceCreamSalon = new IceCreamSalon(priceList1, 0);
+        IceCreamSeller iceCreamSalon = new IceCreamSalon(priceList, 0);
 
         //Order of Ice Creams
         Flavor[] favouriteFlavs = {Flavor.STRACIATELLA, Flavor.MOKKA};
@@ -19,16 +19,19 @@ public class IceCreamApp {
 
         IceRocket iceRocket = iceCreamSalon.orderIceRocket();
 
-        Magnum favouriteMagnum = iceCreamSalon.orderMagnum(MagnumType.MILKCHOCOLATE);
+        Magnum favouriteMagnum = iceCreamSalon.orderMagnum(MagnumType.ALPINENUTS);
 
         //Array eatable of previous order
         Eatable[] eatable = {favouriteCone, iceRocket, favouriteMagnum};
 
+
+        //eat method for order
         favouriteCone.eat();
         iceRocket.eat();
         favouriteMagnum.eat();
 
-        System.out.println("Total Profit Salon: " + iceCreamSalon.getProfit());
+        //print out profit
+        System.out.println(iceCreamSalon);
 
 
 

@@ -7,6 +7,13 @@ public class Stock {
     private int balls;
     private int magni;
 
+    public Stock(int cones, int balls, int iceRockets, int magni){
+        setCones(cones);
+        setBalls(balls);
+        setIceRockets(iceRockets);
+        setMagni(magni);
+    }
+
     public int getIceRockets() {
         return iceRockets;
     }

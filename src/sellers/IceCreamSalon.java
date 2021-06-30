@@ -45,9 +45,7 @@ public class IceCreamSalon implements IceCreamSeller {
     @Override
     public String toString() {
         return "IceCreamSalon{" +
-                "pricelist=" + pricelist +
-                ", totalProfit=" + totalProfit +
+                "totalProfit=" + totalProfit +
                 '}';
     }
-
 }

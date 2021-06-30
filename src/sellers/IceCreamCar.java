@@ -7,14 +7,16 @@ public abstract class IceCreamCar implements IceCreamSeller{
     private Stock stock;
     private double profit;
 
-    public IceCreamCar(PriceList priceList, Stock stock){
+    public IceCreamCar(PriceList priceList, Stock stock, double profit){
         this.priceList=priceList;
         this.stock=stock;
+        this.profit=profit;
     }
 
-
-    public Cone orderCone(Flavor[] flavors) {
-        Cone cone = prepareCone(flavors);
+    @Override
+    public Cone orderCone(Flavor[] balls) {
+        Cone cone = new Cone(balls);
+        prepareCone(balls);
         return cone;
     }
 
@@ -28,7 +30,7 @@ public abstract class IceCreamCar implements IceCreamSeller{
     return cone;
     }
 
-
+    @Override
     public IceRocket orderIceRocket() {
        IceRocket iceRocket = prepareIceRocket();
        return iceRocket;
@@ -44,16 +46,16 @@ public abstract class IceCreamCar implements IceCreamSeller{
         return iceRocket;
     }
 
-
+    @Override
     public Magnum orderMagnum(MagnumType magnumType) {
-       Magnum magnum = prepareMagnum(magnumType);
+       Magnum magnum = new Magnum(magnumType);
+       prepareMagnum(magnumType);
        return magnum;
     }
 
 
     public Magnum prepareMagnum(MagnumType magnumType){
-        Magnum magnum = new Magnum();
-
+        Magnum magnum = new Magnum(magnumType);
         stock.setMagni(stock.getMagni()-1);
         this.profit += priceList.getMagnumStandardPrice(magnumType);
         return magnum;
