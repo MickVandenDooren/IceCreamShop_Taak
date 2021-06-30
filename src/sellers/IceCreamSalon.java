@@ -4,8 +4,13 @@ import eatables.*;
 
 public class IceCreamSalon implements IceCreamSeller {
 
-    PriceList pricelist = new PriceList();
-    public double totalProfit;
+    PriceList pricelist;
+    double totalProfit;
+
+    public IceCreamSalon(PriceList priceList, double totalProfit){
+        this.pricelist= priceList;
+        this.totalProfit = totalProfit;
+    }
 
     @Override
     public void getProfit() {

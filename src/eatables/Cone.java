@@ -2,12 +2,12 @@ package eatables;
 public class Cone implements Eatable {
 
 
-    Flavor[] balls = new Flavor[100];
+    private Flavor[] balls;
 
-    Cone() {
+    public Cone() {
     }
 
-    Cone(Flavor[] balls) {
+    public Cone(Flavor[] balls) {
         this.balls = balls;
     }
 

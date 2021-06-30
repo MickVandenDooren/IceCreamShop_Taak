@@ -1,22 +1,33 @@
 package sellers;
-
 import eatables.*;
 
 public class IceCreamCar implements IceCreamSeller{
 
-    PriceList priceList = new PriceList();
-    Stock stock = new Stock();
-    public double profit;
+    private PriceList priceList;
+    private Stock stock;
+    private double profit;
 
-    @Override
-    public Cone orderCone(Flavor[] balls) {
-        return IceCreamSeller.super.orderCone(balls);
+    public IceCreamCar(PriceList priceList, Stock stock){
+        this.priceList=priceList;
+        this.stock=stock;
     }
 
-    /*
-    public Cone prepareCone(Flavor[] balls){
-    } OPLOSSING VOOR ZOEKEN!!!!
-    */
+    @Override
+    public Cone orderCone(Flavor[] flavors) {
+        Cone cone = prepareCone(flavors);
+        return cone;
+    }
+
+
+    public Cone prepareCone(Flavor[] balls) {
+    Cone cone = new Cone();
+    stock.setCones(stock.getCones()-1);
+    stock.setBalls(stock.getBalls() - balls.length);
+
+    this.profit += priceList.getBallPrice() * balls.length;
+    return cone;
+    }
+
 
     @Override
     public IceRocket orderIceRocket(IceRocket iceRocket) {
