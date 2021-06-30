@@ -2,7 +2,7 @@ package eatables;
 
 public class IceRocket implements Eatable{
 
-    IceRocket(){
+    public IceRocket(){
     }
 
     @Override

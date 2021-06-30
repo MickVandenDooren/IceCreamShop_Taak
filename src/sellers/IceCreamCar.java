@@ -31,27 +31,37 @@ public class IceCreamCar implements IceCreamSeller{
 
     @Override
     public IceRocket orderIceRocket(IceRocket iceRocket) {
-        return IceCreamSeller.super.orderIceRocket(iceRocket);
-    }
-    /*
-    public IceRocket prepareIceRocket(IceRocket iceRocket) {
+       IceRocket iceRocket = prepareIceRocket();
+       return iceRocket;
+        }
+
+
+    public IceRocket prepareIceRocket() {
+        IceRocket iceRocket = new IceRocket();
+
+        stock.setIceRockets(stock.getIceRockets()-1);
+        this.profit += priceList.getRocketPrice();
+
         return iceRocket;
-    }  OPLOSSING VOOR ZOEKEN!!!
-     */
+    }
 
     @Override
     public Magnum orderMagnum(MagnumType magnum) {
-        return IceCreamSeller.super.orderMagnum(magnum);
+       Magnum magnum = prepareMagnum(magnum);
+       return magnum;
     }
 
-    /*
-    public Magnum prepareMagnum(MagnumType Magnum){
+
+    public Magnum prepareMagnum(MagnumType magnumType){
+        Magnum magnum = new Magnum();
+
+        stock.setMagni(stock.getMagni()-1);
+        this.profit += priceList.getMagnumStandardPrice(magnumType);
         return magnum;
-    }  OPLOSSING VOOR ZOEKEN!!!
-     */
+    }
 
     @Override
-    public void getProfit() {
+    public double getProfit() {
         return profit;
     }
 
