@@ -1,18 +1,21 @@
 package sellers;
 
+import eatables.MagnumType;
+
 public class PriceList {
 
-    double ballPrice = 1.00;
-    double rocketPrice = 1.80;
-    double magnumStandardPrice = 2.50;
+    double ballPrice;
+    double rocketPrice;
+    double magnumStandardPrice;
 
     PriceList(){
+        this(0,0,0);
     }
 
-    PriceList(double ballPrice, double rocketPrice, double magnumStandardPrice){
-    this.ballPrice=ballPrice;
-    this.rocketPrice=rocketPrice;
-    this.magnumStandardPrice=magnumStandardPrice;
+    public PriceList(double ballPrice, double rocketPrice, double magnumStandardPrice){
+    setBallPrice(ballPrice);
+    setRocketPrice(rocketPrice);
+    setMagnumStandardPrice(magnumStandardPrice);
     }
 
     public void setBallPrice(double ballPrice){
@@ -35,7 +38,12 @@ public class PriceList {
         return rocketPrice;
     }
 
-    public double getMagnumStandardPrice() {
+    public double getMagnumStandardPrice(MagnumType magnumType) {
+
+        if(magnumType == MagnumType.ALPINENUTS){
+            magnumStandardPrice *= 1.50;
+        }
+
         return magnumStandardPrice;
     }
 }

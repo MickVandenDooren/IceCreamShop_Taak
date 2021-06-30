@@ -1,7 +1,7 @@
 package sellers;
 import eatables.*;
 
-public class IceCreamCar implements IceCreamSeller{
+public abstract class IceCreamCar implements IceCreamSeller{
 
     private PriceList priceList;
     private Stock stock;
@@ -12,7 +12,7 @@ public class IceCreamCar implements IceCreamSeller{
         this.stock=stock;
     }
 
-    @Override
+
     public Cone orderCone(Flavor[] flavors) {
         Cone cone = prepareCone(flavors);
         return cone;
@@ -29,11 +29,10 @@ public class IceCreamCar implements IceCreamSeller{
     }
 
 
-    @Override
-    public IceRocket orderIceRocket(IceRocket iceRocket) {
+    public IceRocket orderIceRocket() {
        IceRocket iceRocket = prepareIceRocket();
        return iceRocket;
-        }
+    }
 
 
     public IceRocket prepareIceRocket() {
@@ -45,9 +44,9 @@ public class IceCreamCar implements IceCreamSeller{
         return iceRocket;
     }
 
-    @Override
-    public Magnum orderMagnum(MagnumType magnum) {
-       Magnum magnum = prepareMagnum(magnum);
+
+    public Magnum orderMagnum(MagnumType magnumType) {
+       Magnum magnum = prepareMagnum(magnumType);
        return magnum;
     }
 
