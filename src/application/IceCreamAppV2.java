@@ -8,29 +8,36 @@ public class IceCreamAppV2 {
 
 
         // Pricelist instance
-        PriceList priceList = new PriceList(1.5, 3.0, 3.5);
+        PriceList priceList = new PriceList(0.5, 1, 1);
 
         //Stock instance
-        Stock truckStock = new Stock(10, 10, 10, 10);
+        Stock truckStock = new Stock(10, 10, 1, 10);
 
         // Initializing Ice Cream Truck
-        IceCreamSeller iceCreamTruck = new IceCreamCar(priceList, truckStock, 0) {
+        IceCreamSeller iceCreamTruck = new IceCreamCar(priceList, truckStock) {
         };
 
-        //Order of Ice Creams
-        Flavor[] secondFavouriteFlavs = {Flavor.VANILLA, Flavor.CHOCOLATE};
+        //Array eatable initializing with max length of inventory
+        Eatable[] order = new Eatable[truckStock.getCones()+ truckStock.getIceRockets()+ truckStock.getMagni()];
 
-        Cone secondFavouriteCone = iceCreamTruck.orderCone(secondFavouriteFlavs);
-        IceRocket iceRocket1 = iceCreamTruck.orderIceRocket();
-        IceRocket iceRocket2 = iceCreamTruck.orderIceRocket();
-        Magnum secondFavouriteMagnum = iceCreamTruck.orderMagnum(MagnumType.ROMANTICSTRAWBERRIES);
+        //put order of Ice Creams into array with catch
+        try{
+            order[0]= iceCreamTruck.orderCone(new Flavor[]{Flavor.MOKKA, Flavor.LEMON, Flavor.PISTACHE});
+            order[1]= iceCreamTruck.orderIceRocket();
+            order[2]= iceCreamTruck.orderMagnum(MagnumType.ALPINENUTS);
+        } catch (noMoreIceCreamException e){
+            e.printStackTrace();
+        }
 
+        //eat method print for every ice cream
+        for (Eatable orders : order) {
+            if (orders != null) {
+                orders.eat();
+            }
+        }
 
-        //Print eat
-        secondFavouriteCone.eat();
-        iceRocket1.eat();
-        iceRocket2.eat();
-        secondFavouriteMagnum.eat();
+        //Print profit
+        System.out.println(iceCreamTruck);
 
     }
 

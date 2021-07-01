@@ -4,9 +4,11 @@ import eatables.*;
 
 public interface IceCreamSeller extends Profitable {
 
-    Cone orderCone(Flavor[] balls);
+    Cone orderCone(Flavor[] balls) throws noMoreIceCreamException;
 
-    IceRocket orderIceRocket();
+    default IceRocket orderIceRocket() throws noMoreIceCreamException {
+        return null;
+    }
 
-    Magnum orderMagnum(MagnumType type);
+    Magnum orderMagnum(MagnumType type) throws noMoreIceCreamException;
 }

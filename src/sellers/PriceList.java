@@ -1,5 +1,6 @@
 package sellers;
 
+import eatables.Flavor;
 import eatables.MagnumType;
 
 public class PriceList {
@@ -38,12 +39,14 @@ public class PriceList {
         return rocketPrice;
     }
 
-    public double getMagnumStandardPrice(MagnumType magnumType) {
-
-        if(magnumType == MagnumType.ALPINENUTS){
-            magnumStandardPrice *= 1.50;
+    public double getMagnumPrice(MagnumType magnumType) {
+        switch (magnumType){
+            case ALPINENUTS: return magnumStandardPrice * 1.5;
+            case MILKCHOCOLATE:
+            case BLACKCHOCOLATE:
+            case WHITECHOCOLATE:
+            case ROMANTICSTRAWBERRIES:
+            default: return magnumStandardPrice;
         }
-
-        return magnumStandardPrice;
     }
 }

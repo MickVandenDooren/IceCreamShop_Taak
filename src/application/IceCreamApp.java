@@ -10,31 +10,29 @@ public class IceCreamApp {
         PriceList priceList = new PriceList(1.0,2.50,3.00);
 
         // Initializing Ice Salon
-
         IceCreamSeller iceCreamSalon = new IceCreamSalon(priceList, 0);
 
-        //Order of Ice Creams
-        Flavor[] favouriteFlavs = {Flavor.STRACIATELLA, Flavor.MOKKA};
-        Cone favouriteCone = iceCreamSalon.orderCone(favouriteFlavs);
+        //Array eatable initializing
+        Eatable[] order = new Eatable[1000];
 
-        IceRocket iceRocket = iceCreamSalon.orderIceRocket();
+        //Put order of ice cream into array with catch
+       try{
+        order[0]= iceCreamSalon.orderCone(new Flavor[]{Flavor.STRAWBERRY, Flavor.CHOCOLATE, Flavor.STRACIATELLA});
+        order[1]= iceCreamSalon.orderIceRocket();
+        order[2]= iceCreamSalon.orderMagnum(MagnumType.ALPINENUTS);
+        order[3]= iceCreamSalon.orderMagnum(MagnumType.MILKCHOCOLATE);
+       } catch (noMoreIceCreamException e){
+           e.printStackTrace();
+       }
 
-        Magnum favouriteMagnum = iceCreamSalon.orderMagnum(MagnumType.ALPINENUTS);
+        //Eat method print for every ice cream
+        for (Eatable orders : order) {
+            if (orders != null) {
+                orders.eat();
+            }
+        }
 
-        //Array eatable of previous order
-        Eatable[] eatable = {favouriteCone, iceRocket, favouriteMagnum};
-
-
-        //eat method for order
-        favouriteCone.eat();
-        iceRocket.eat();
-        favouriteMagnum.eat();
-
-        //print out profit
+        //Print out profit
         System.out.println(iceCreamSalon);
-
-
-
-
     }
 }

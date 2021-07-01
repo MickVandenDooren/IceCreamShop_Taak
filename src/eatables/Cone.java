@@ -12,14 +12,12 @@ public class Cone implements Eatable {
 
     @Override
     public void eat() {
-        System.out.print("\n"+"You're eating a cone with ");
+        System.out.print("\n" + "You're eating a cone with ");
         for (Flavor ball : balls) {
             if (ball != null) {
                 System.out.print(ball + " ");
             }
-        } System.out.print("flavor(s).");
-
+        }
+        System.out.print("flavor(s).");
     }
-
-
 }
